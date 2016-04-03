@@ -15,3 +15,22 @@ body {
 footer {
     margin: 50px 0;
 }
+
+.wine {
+    margin-bottom: 20px;
+}
+
+.wine h3 {
+    text-align: center;
+}
+
+.wine img {
+    margin: 0 auto;
+    max-height: 300px;
+}
+
+.wine p {
+    /*height: 4em;*/
+    /*overflow: hidden;*/
+    text-align: justify;
+}

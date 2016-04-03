@@ -1,18 +1,55 @@
+<div class="col-md-12" *ngIf="wine">
+    <h1 class="page-header col-md-12">
+        {{wine.name}}
+        <small>{{wine.country}}</small>
+    </h1>
+    
+    <div class="row button-bar col-md-12">
+        <button type="button" class="btn btn-primary" *ngIf="!isEditing" (click)="toggleEdit()">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+        </button>
+        <button type="button" class="btn btn-default" *ngIf="isEditing" (click)="toggleEdit()">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Cancel
+        </button>
 
-<!-- Wine Heading -->
-<div class="row">
-    <div class="col-sm-6">
-        <h1 class="page-header">{{wine.name}}
-            <small>{{wine.country}}</small>
-        </h1>
+        <button type="button" class="btn btn-success" *ngIf="isEditing" (click)="saveWine()">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+        </button>
+        
+        <button type="button" class="btn btn-danger" (click)="deleteWine()">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
+        </button>
+    </div>
+    
+    <div class="row col-md-12">
+        <div class="col-sm-3" [ngSwitch]="wine.imageId">
+            <img *ngSwitchDefault class="img-responsive" src="../cxf/images/{{wine.imageId}}.jpg">
+            <img *ngSwitchWhen="0" class="img-responsive" src="pics/generic.jpg">
+        </div>
+
+        <div class="col-sm-3">
+            <div class="row">
+                <h3>Description</h3>                
+                <p *ngIf="!isEditing">{{wine.description}}</p>
+                <textarea *ngIf="isEditing" class="form-control" [(ngModel)]="editedWine.description" rows="4"></textarea>
+
+                <h3>Details</h3>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Id</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">{{wine.id}}</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- Wine Edit Bar -->
-<div class="row button-bar">
+<!--<div class="row button-bar">
     <div class="col-sm-6">
 
-        <!-- Edit/Cancel button -->
         <ng-switch on="isEditing">
             <button type="button" class="btn btn-primary"  ng-switch-when="false" ng-click="toggleEdit()">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
@@ -22,32 +59,24 @@
             </button>
         </ng-switch>
 
-        <!-- Save button -->
         <button type="button" class="btn btn-success" ng-if="isEditing" ng-click="saveWine()">
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
         </button>
 
-        <!-- Delete button -->
         <button type="button" class="btn btn-danger" ng-click="deleteWine()" ng-hide="isNew">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
         </button>
     </div>
 </div>
 
-<!-- Wine Pane -->
 <div class="row">
-
-    <!-- Wine Image -->
     <div class="col-sm-3" ng-switch="wine.imageId">
         <img class="img-responsive" ng-src="../cxf/images/{{ wine.imageId  }}" ng-switch-default>
         <img class="img-responsive" ng-src="pics/generic.jpg" ng-switch-when="0">
     </div>
 
-    <!-- Wine Details -->
     <div class="col-sm-3">
         <div class="row">
-
-            <!-- Wine Description Text/TextEdit -->
             <h3>Description</h3>
                 <ng-switch on="isEditing">
                     <p ng-switch-when="false">{{wine.description}}</p>
@@ -55,10 +84,8 @@
                               ng-model="editedWine.description" rows="4"></textarea>
                 </ng-switch>
 
-            <!-- Wine Properties List/Text Inputs -->
             <h3>Details</h3>
             <form class="form-horizontal" role="form">
-                <!-- Wine Id is just a text -->
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Id</label>
                     <div class="col-sm-8">
@@ -66,7 +93,6 @@
                     </div>
                 </div>
 
-                <!-- The other Wine properties are text or Text Inputs -->
                 <div class="form-group" ng-repeat="(key, value) in wine"  ng-if="key!='id' && key!='description' && key!='imageId'">
                     <label class="col-sm-4 control-label">{{key}}</label>
                     <div class="col-sm-8" ng-switch on="isEditing">
@@ -77,4 +103,4 @@
             </form>
         </div>
     </div>
-</div>
+</div>-->

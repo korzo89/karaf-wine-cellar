@@ -1,0 +1,14 @@
+<div class="col-md-12">
+    <div class="row" *ngFor="#row of wines | columnSplit:3">
+        <div class="col-md-4 portfolio-item wine" *ngFor="#wine of row">
+            <a [routerLink]="['Wine',{id:wine.id}]" [ngSwitch]="wine.imageId">
+                <img *ngSwitchDefault class="img-responsive" src="../cxf/images/{{wine.imageId}}.jpg">
+                <img *ngSwitchWhen="0" class="img-responsive" src="pics/generic.jpg">
+            </a>
+            <h3>
+                <a [routerLink]="['Wine',{id:wine.id}]">{{wine.name}}</a>
+            </h3>
+            <p>{{wine.description}}</p>
+        </div>
+    </div>
+</div>
