@@ -1,11 +1,11 @@
 
-import { PipeTransform, Pipe } from 'angular2/core';
+import { PipeTransform, Pipe } from '@angular/core';
 
 @Pipe({
     name: 'columnSplit'
 })
 export class ColumnSplitPipe implements PipeTransform {
-    transform(value: any[], args: number[]): any[][] {
+    transform(value: any[], ...args: number[]): any[][] {
         if (!args || args.length == 0)
             throw new Error('ColumnSplitPipe requires one argument');
         if (!value)

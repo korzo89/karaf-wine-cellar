@@ -1,7 +1,6 @@
-import { Component } from 'angular2/core';
-import { HTTP_PROVIDERS } from 'angular2/http';
-import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig } from 'angular2/router';
-import 'rxjs/Rx';
+import { Component } from '@angular/core';
+import { HTTP_PROVIDERS } from '@angular/http';
+import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, Routes } from '@angular/router';
 
 import { WineService } from './wines/wine.service';
 import { WineListComponent } from './wines/wine-list.component';
@@ -14,10 +13,10 @@ import { ContactComponent } from './contact.component';
     directives: [ROUTER_DIRECTIVES, WineListComponent],
     providers: [HTTP_PROVIDERS, ROUTER_PROVIDERS, WineService]
 })
-@RouteConfig([
-    { path: '/wines', name: 'Wines', component: WineListComponent, useAsDefault: true },
-    { path: '/wine/:id', name: 'Wine', component: WineDetailsComponent },
-    { path: '/contact', name: 'Contact', component: ContactComponent }
+@Routes([
+    { path: '/wines', component: WineListComponent },
+    { path: '/wine', component: WineDetailsComponent },
+    { path: '/contact', component: ContactComponent }
 ])
 export class AppComponent {
 }

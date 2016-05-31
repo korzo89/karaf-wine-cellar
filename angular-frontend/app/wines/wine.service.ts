@@ -1,6 +1,6 @@
-import { Injectable } from 'angular2/core';
-import { Http, Response } from 'angular2/http';
-import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
 import { IWine } from './wine';
 
@@ -8,7 +8,7 @@ import { IWine } from './wine';
 export class WineService {
     private _apiUrl = '/cxf/wines.json';
     
-    constructor(private _http: Http) {      
+    constructor(private _http: Http) {    
     }
     
     getWines(): Observable<IWine[]> {

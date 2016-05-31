@@ -1,5 +1,5 @@
-import { Component, OnInit } from 'angular2/core';
-import { RouteParams } from 'angular2/router';
+import { Component, OnInit } from '@angular/core';
+import { RouteSegment } from '@angular/router';
 
 import { IWine, Wine } from './wine';
 import { WineService } from './wine.service';
@@ -14,12 +14,12 @@ export class WineDetailsComponent implements OnInit {
     isEditing: boolean = false;
     
     constructor(private _wineService: WineService,
-        private _routeParams: RouteParams) {
+        private _routeSegment: RouteSegment) {
     }
 
     ngOnInit() { 
         if (!this.wine) {
-            let id = +this._routeParams.get('id');
+            let id = +this._routeSegment.getParam('id');
             this.getWine(id);
         }
     }
