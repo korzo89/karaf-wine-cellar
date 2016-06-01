@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteSegment } from '@angular/router';
 
-import { IWine, Wine } from './wine';
-import { WineService } from './wine.service';
+import { IWine, Wine } from '../../services/wine';
+import { WineService } from '../../services/wine.service';
 
 @Component({
     selector: 'wine-cellar-wine-details',
-    templateUrl: 'templates/wine-details.component.html'
+    templateUrl: 'app/components/wines/wine-details.component.html'
 })
 export class WineDetailsComponent implements OnInit {
     wine: IWine;
